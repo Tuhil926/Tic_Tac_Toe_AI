@@ -145,6 +145,13 @@ class Node:
         return grid_str[0:3:] + "\n" + grid_str[3:6:] + "\n" + grid_str[6::] + "\n"
 
 
+def make_grid_str(grid):
+    grid_str = ""
+    for i in range(3):
+        for j in range(3):
+            grid_str += str(grid[i][j])
+    return grid_str
+
 
 def make_tree(node):
     current_grid = node.make_grid()
@@ -443,16 +450,6 @@ class TicTacToe:
             if check_draw(self.grid):
                 print("It's a draw!")
                 return True
-
-
-
-
-def make_grid_str(grid):
-    grid_str = ""
-    for i in range(3):
-        for j in range(3):
-            grid_str += str(grid[i][j])
-    return grid_str
 
 
 def check_draw(grid):
