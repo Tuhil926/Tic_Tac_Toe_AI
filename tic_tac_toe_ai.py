@@ -1,8 +1,6 @@
 import pickle
 import random
 import pygame
-import time
-import threading
 
 pygame.init()
 
@@ -147,15 +145,6 @@ class Node:
         return grid_str[0:3:] + "\n" + grid_str[3:6:] + "\n" + grid_str[6::] + "\n"
 
 
-def run_after_delay(func, delay):
-    time.sleep(delay)
-    func()
-
-
-def invoke(function, time_to_start):
-    thread = threading.Thread(target=run_after_delay, args=(function, time_to_start))
-    thread.start()
-
 
 def make_tree(node):
     current_grid = node.make_grid()
@@ -203,8 +192,6 @@ def make_tree(node):
 
 
 root_node = Node(1)
-#make_tree(root_node)
-
 
 try:
     tree_file = open("treefile.bin", "rb")
@@ -218,8 +205,6 @@ except FileNotFoundError:
     tree_file.close()
 
 current_node = root_node
-
-current_grid = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 
 starts = random.choice([1, 2])
 #starts = 1
@@ -328,11 +313,6 @@ class TicTacToe:
             for j in range(3):
                 self.squares[i][j].state = self.grid[i][j]
                 self.squares[i][j].pressed = self.grid[i][j] != 0
-        # if self.won:
-        #     if -self.won_time + time.time_ns() > 2000000000:
-        #         self.won_time = time.time_ns()
-        #     if time.time_ns() - self.won_time > 1000000000:
-        #         self.reset()
 
     def reset(self):
         global current_node
