@@ -287,7 +287,7 @@ class TicTacToe:
                                 current_node = node
                                 break
                         print(current_node)
-                        won = current_node.check_won(current_grid)
+                        won = current_node.check_won(self.grid)
                         self.winning_player = won
                         if won == 1:
                             print("You won!")
